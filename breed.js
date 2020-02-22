@@ -1,0 +1,23 @@
+
+function getDogImage(){
+  let breed = $('input[type=text]').val();;
+  fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+    .then(response => response.json())
+    .then(responseJson => 
+      showMeTheDoggo(responseJson));
+}
+
+
+
+function submitForDoggo(){
+  $('form').submit(event => {
+    event.preventDefault();
+    getDogImage();
+  })
+}
+function showMeTheDoggo(responseJson){
+	console.log(responseJson)
+	$('main').empty();
+	$('main').append(`<img src="${responseJson.message}" class="sizing" alt="picture of a Dog">`);
+}
+submitForDoggo()
