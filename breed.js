@@ -4,7 +4,8 @@ function getDogImage(){
   fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
     .then(response => response.json())
     .then(responseJson => 
-      showMeTheDoggo(responseJson));
+      showMeTheDoggo(responseJson))
+.catch(error => alert('something went wrong'));
 }
 
 
