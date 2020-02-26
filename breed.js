@@ -3,10 +3,16 @@ function getDogImage(){
   let breed = $('input[type=text]').val();;
   fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
     .then(response => response.json())
-    .then(responseJson => 
-      showMeTheDoggo(responseJson))
-.catch(error => alert('something went wrong'));
-}
+    .then(responseJson => {
+      if (responseJson.status === "success"){
+        showMeTheDoggo(responseJson)
+      } else {
+        alert(responseJson.message)
+      }
+    })
+    .catch(error => alert('something went wrong'));
+  }
+
 
 
 
